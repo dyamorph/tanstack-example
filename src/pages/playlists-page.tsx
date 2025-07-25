@@ -1,5 +1,4 @@
-import {useQuery} from "@tanstack/react-query";
-import {client} from "../shared/api/client.ts";
+import {Playlists} from "../features/playlists.tsx";
 
 export function PlaylistsPage() {
   return <>
@@ -8,17 +7,3 @@ export function PlaylistsPage() {
   </>;
 }
 
-export const Playlists = () => {
-  const query = useQuery({
-    queryKey: ['playlists'],
-    queryFn: () => client.GET("/playlists")
-  })
-
-  return (
-      <ul>
-        {query.data?.data?.data.map((playlist) => (
-          <li>{playlist.attributes.title}</li>
-        ))}
-      </ul>
-  )
-}
